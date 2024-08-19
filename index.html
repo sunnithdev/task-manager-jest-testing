@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/task.css">
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'
+        rel='stylesheet'>
+</head>
+
+<body>
+    <h1>Task Manager</h1>
+
+    <form id="TaskForm">
+        <div class="form-group">
+            <label for="taskName">Task Name:</label>
+            <div class="">
+                <input type="text" name="name" id="taskName" class="form-control" placeholder="Enter Task..."
+                    aria-label="Task Name" aria-required="true" />
+                <span id="errorName" class="text-danger" role="alert"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="assignee">Assignee:</label>
+            <div>
+                <select name="assignee" id="assignee" class="form-control" aria-label="Assignee">
+                    <option value="" disabled selected>Select Assignee</option>
+                    <option value="John Doe">John Doe</option>
+                    <option value="Jane Smith">Jane Smith</option>
+                    <option value="Robert Johnson">Robert Johnson</option>
+                </select>
+                <span id="errorAssignee" class="text-danger" role="alert"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <div class="">
+                <textarea type="text" name="description" id="description" rows="5" placeholder="Enter Descriptions.."
+                    aria-label="Description"></textarea>
+                <span id="errorDesc" class="text-danger" role="alert"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Due Date:</label>
+            <div>
+                <input type="text" name="dueDate" class="form-control" id="date" aria-label="Due Date">
+                <span id="errorDate" class="text-danger font-weight-bold" role="alert"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Status:</label>
+            <div class="status">
+                <label>
+                    <input type="radio" name="radio-btn" id="statusNotStarted" class="status" value="Not Started"
+                        aria-label="Not Started"> Not Started
+                </label>
+                <label>
+                    <input type="radio" name="radio-btn" id="statusInProgress" class="status" value="In Progress"
+                        aria-label="In Progress"> In Progress
+                </label>
+                <label>
+                    <input type="radio" name="radio-btn" id="statusCompleted" class="status" value="Completed"
+                        aria-label="Completed"> Completed
+                </label>
+                <span id="errorRadio" class="text-danger" role="alert"></span>
+            </div>
+        </div>
+
+        <div class="btn form-group">
+            <button type="button" class="button" id="submit">Add</button>
+            <label>Update</label><button type="button" class="button" id="update">Update</button>
+            <label>Clear</label><button type="button" class="button secndory" id="clear">Clear</button>
+        </div>
+    </form>
+    <div id="basic" class="task-list"><br>
+        <div>
+            <div class="header">Task List</div>
+            <input type="text" id="search-filter" class="form-control" placeholder="Search for tasks...">
+            <div id="toastMessage" class="toastMessage" style="display: none;"></div>
+            <div class="scrollbar">
+                <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Assigne To</th>
+                            <th style="width: 200px">Description</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="lib/Jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/task.js"></script>
+</body>
+
+</html>
